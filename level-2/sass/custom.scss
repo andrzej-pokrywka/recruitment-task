@@ -1,0 +1,103 @@
+// variables
+$bgcolor: #f0f0f0;
+$color: #121212;
+$breakpoints: (
+    "bp-1": 576px,
+    "bp-2": 768px,
+    "bp-3": 992px,
+    "bp-4": 1280px 
+);
+
+$h1:0; $p:0; $lh:0; $l:0; 
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+}
+@media (max-width: 575px) {
+    h1 {
+        font-size: 2.6rem;
+        line-height: 3rem; 
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+  
+    p {
+        font-size: 1rem;
+        line-height: 1.65rem;
+        margin-top: 6%;
+        margin-left: 10%;
+        margin-right: 10%;
+     } 
+}
+
+@each $breakpoint, $i in $breakpoints {
+
+    @media (min-width: $i){
+        @if ( $i == 1280px ) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+        h1{
+            font-size: 1.1 + $h1+rem;
+            line-height: 1.5 + $h1+rem;
+            margin-top: percentage( ((5 + 3*$l) / 100));
+            margin-left: 19%;
+            margin-right: 19%;
+        }
+        p{
+            font-size: 0.6 + $p+rem;
+            line-height: 0.9 + $lh+rem;
+            margin-left: 19%;
+            margin-right: 19%;
+            margin-top: percentage((3 + $l) / 100);
+            margin-bottom: 1rem + $h1;
+        } 
+        .custom{
+            font-size: 0.6 + $p+rem;
+            line-height: 0.9 + $lh+rem;
+            width: 23% - $p;
+            border-radius: 1 +$p+rem;
+        }
+    $h1 : $h1 + 0.5;
+    $p : $p + 0.15;
+    $lh : $lh + 0.25;
+    $l : $l + 1;
+}
+}
+
+.container{
+    height: 100vh;
+    padding-right: 0;
+    padding-left: 0;
+}
+.row{
+    width: 100%;
+    max-width: 1280px;
+    padding: 0 5%;
+    background-color: $bgcolor;
+}
+.col-sm-6{
+    margin-top: 9%;
+    margin-bottom: 9%;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #fff;
+}
+h1{
+    font-weight: 700;
+}
+p{
+    font-weight: 300;
+    color: $color;
+}
+.custom{
+    float: right;
+    border-radius: 1rem;
+    margin-right: 19%;
+    color: #fff;
+    background-color: #E4C1AE;
+}
